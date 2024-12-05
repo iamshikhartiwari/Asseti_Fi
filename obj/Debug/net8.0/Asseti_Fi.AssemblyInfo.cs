@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Asseti_Fi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff2a0ac9068a6c089b7cf8f35e8b66f16ea1e25f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Asseti_Fi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Asseti_Fi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -92,13 +92,13 @@ namespace Asseti_Fi.Controllers
         }
 
         [HttpPut("users/{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] AddUserDto updateUserDto)
+        public async Task<IActionResult> UpdateUser(string id, [FromBody] AddUserDto updateUserDto)
         {
             return await _userManagementRepo.UpdateUserById(id, updateUserDto);
         }
 
         [HttpDelete("users/{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(string id)
         {
             return await _userManagementRepo.DeleteUserById(id);
         }

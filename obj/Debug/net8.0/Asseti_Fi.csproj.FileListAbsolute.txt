@@ -269,3 +269,4 @@
 /Users/shikhartiwari/RiderProjects/Asseti_Fi/Asseti_Fi/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/shikhartiwari/RiderProjects/Asseti_Fi/Asseti_Fi/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/shikhartiwari/RiderProjects/Asseti_Fi/Asseti_Fi/obj/Debug/net8.0/Asseti_Fi.MvcApplicationPartsAssemblyInfo.cs
+/Users/shikhartiwari/RiderProjects/Asseti_Fi/Asseti_Fi/obj/Debug/net8.0/Asseti_Fi.sourcelink.json

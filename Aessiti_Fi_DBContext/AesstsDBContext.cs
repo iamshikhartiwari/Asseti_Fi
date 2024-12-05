@@ -1,6 +1,8 @@
 using Asseti_Fi.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
+using Asseti_Fi.Dto;
 
 namespace Asseti_Fi.Aessiti_Fi_DBContext;
 
@@ -11,15 +13,52 @@ public class AesstsDBContext : DbContext
         
     }
     
-    public DbSet<User>? Users { get; set; }
+    // public DbSet<User>? Users { get; set; }
+    public DbSet<User> Users { get; set; }
     public DbSet<Asset> Assets { get; set; }
-    public DbSet<AssetAllocation>? AssetAllocations { get; set; }
-    public DbSet<ServiceRequest>? ServiceRequests { get; set; }
-    public DbSet<AuditRequest>? AuditRequests { get; set; }
-    
-    
+    public DbSet<AssetAllocation> AssetAllocations { get; set; }
+    public DbSet<ServiceRequest> ServiceRequests { get; set; }
+    public DbSet<AuditRequest> AuditRequests { get; set; }
+
+
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<AssetAllocation>()
+            .HasOne(a => a.Asset)
+            .WithMany(a => a.Allocations)
+            .HasForeignKey(a => a.AssetId);
+
+        modelBuilder.Entity<AssetAllocation>()
+            .HasOne(a => a.Asset)
+            .WithMany(a => a.Allocations)
+            .HasForeignKey(a => a.AssetId);
+
+        modelBuilder.Entity<AuditRequest>()
+            .HasOne(a => a.Admin)
+            .WithMany()  // Assuming Admin does not need a collection of AuditRequests
+            .HasForeignKey(a => a.AdminId)
+            .OnDelete(DeleteBehavior.Restrict);  // Prevent Admin deletion if linked to AuditRequest
+
+        modelBuilder.Entity<AuditRequest>()
+            .HasOne(a => a.User)
+            .WithMany(u => u.AuditRequests)
+            .HasForeignKey(a => a.UserId);
+
+        modelBuilder.Entity<AuditRequest>()
+            .HasOne(a => a.Admin)
+            .WithMany() // Assuming Admin does not have a collection of audit requests
+            .HasForeignKey(a => a.AdminId)
+            .OnDelete(DeleteBehavior.Restrict); // Prevent deletion of Admin if related AuditRequests exist
+
+        modelBuilder.Entity<AuditRequest>()
+            .HasOne(a => a.User)
+            .WithMany(u => u.AuditRequests) // User can have multiple audit requests
+            .HasForeignKey(a => a.UserId);
+
         modelBuilder.Entity<AssetAllocation>()
             .HasOne(a => a.User)
             .WithMany(u => u.Allocations)  // Assuming 'Allocations' is a navigation property in 'User'

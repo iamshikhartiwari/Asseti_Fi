@@ -4,6 +4,7 @@ using Asseti_Fi.Aessiti_Fi_DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Asseti_Fi.Migrations
 {
     [DbContext(typeof(AesstsDBContext))]
-    partial class AesstsDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241205061741_CreateRolesTable")]
+    partial class CreateRolesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
